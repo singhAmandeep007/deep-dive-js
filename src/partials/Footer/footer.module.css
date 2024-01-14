@@ -1,0 +1,16 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  background-color: var(--clr-primary-000);
+
+  color: var(--clr-primary-100);
+
+  height: var(--footerHeight);
+}

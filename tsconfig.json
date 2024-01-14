@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "ES2020",
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "lib": ["es6", "dom"],
+    "rootDir": "src",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./src", // Set the base directory for relative paths
+    "paths": {
+      "*": ["*"] // Match any import starting from the base directory
+    }
+  },
+  "include": ["src/**/*", "./typings.d.ts"],
+  "exclude": ["node_modules", "dist", ".yalc", "build"]
+}

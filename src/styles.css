@@ -1,0 +1,26 @@
+@import "../node_modules/normalize.css/normalize.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  font-family: Arial, sans-serif;
+  min-height: 100dvh;
+}
+
+:root {
+  --clr-primary-000: hsl(925, 100%, 10%);
+  --clr-primary-100: hsl(850, 100%, 65%);
+
+  --footerHeight: 60px;
+
+  --navbarHeight: 70px;
+}
+
+main {
+  padding-bottom: var(--footerHeight);
+}
