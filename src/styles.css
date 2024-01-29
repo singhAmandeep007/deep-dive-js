@@ -15,12 +15,22 @@ body {
 :root {
   --clr-primary-000: hsl(925, 100%, 10%);
   --clr-primary-100: hsl(850, 100%, 65%);
+  --clr-primary-200: #262626;
+
+  --clr-white: #ffffff;
 
   --footerHeight: 60px;
 
   --navbarHeight: 70px;
+
+  --playgroundNavHeight: 40px;
 }
 
 main {
+  padding: 24px;
   padding-bottom: var(--footerHeight);
+}
+
+p {
+  margin: 10px 0;
 }

@@ -74,7 +74,7 @@ export function replaceChild({
 }) {
   // if there are children in the target element, replace them with the new element
   if (targetElement.children.length > 0) {
-    if (element instanceof HTMLCollection) {
+    if (element instanceof HTMLCollection || element instanceof Array) {
       // https://stackoverflow.com/questions/222841/most-efficient-way-to-convert-an-htmlcollection-to-an-array
       // targetElement.replaceWith(...Array.from(element));
       targetElement.replaceChildren(...Array.from(element));

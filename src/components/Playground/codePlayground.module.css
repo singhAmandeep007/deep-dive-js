@@ -1,0 +1,31 @@
+.container {
+  margin-bottom: 48px;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: none;
+    background: var(--clr-primary-000);
+
+    .header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--playgroundNavHeight);
+      padding: 0px 16px;
+      background: var(--clr-primary-000);
+
+      .title {
+        color: var(--clr-primary-100);
+      }
+
+      .actionWrapper {
+        display: flex;
+        gap: 8px;
+        margin-right: -10px;
+      }
+    }
+  }
+}

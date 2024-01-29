@@ -1,5 +1,3 @@
-import { replaceChild } from "utils";
-
 import {
   homePage,
   memoryLeaksPage,
@@ -7,9 +5,11 @@ import {
   uncaughtExceptionPage
 } from "pages";
 
+const targetElement = document.getElementsByTagName("main")![0];
+
 export type Route = {
   href: `#${string}`;
-  callback: (rootElement: HTMLElement) => void;
+  callback: () => void;
   name: string;
 };
 export type Routes = {
@@ -19,41 +19,29 @@ export type Routes = {
 export const routes: Routes = {
   "/": {
     href: "#",
-    callback: (targetElement) => {
-      replaceChild({
-        targetElement,
-        element: homePage()
-      });
+    callback: () => {
+      homePage({ targetElement });
     },
     name: "Home"
   },
   "/prototypePollution": {
     href: "#prototypePollution",
-    callback: (targetElement) => {
-      replaceChild({
-        targetElement,
-        element: prototypePollutionPage()
-      });
+    callback: () => {
+      prototypePollutionPage({ targetElement });
     },
     name: "Prototype Pollution"
   },
   "/memoryLeak": {
     href: "#memoryLeak",
-    callback: (targetElement) => {
-      replaceChild({
-        targetElement,
-        element: memoryLeaksPage()
-      });
+    callback: () => {
+      memoryLeaksPage({ targetElement });
     },
     name: "Memory Leak"
   },
   "/uncaughtException": {
     href: "#uncaughtException",
-    callback: (targetElement) => {
-      replaceChild({
-        targetElement,
-        element: uncaughtExceptionPage()
-      });
+    callback: () => {
+      uncaughtExceptionPage({ targetElement });
     },
     name: "Uncaught Exception"
   }
@@ -63,7 +51,8 @@ export const routes: Routes = {
  * Generates an array of route names and their corresponding hrefs.
  * @returns An array of objects containing the name and href of each route.
  * @example
- * const ROUTES_NAME_HREF = [{
+ * const ROUTES_NAME_HREF =
+ *    [{
  * 		href: "#",
  * 		name: "Home"
  * 	},

@@ -8,9 +8,7 @@ import "../styles.css";
 
 const appElement = document.getElementById("app")!;
 
-const mainElement = document.getElementsByTagName("main")![0];
-
-createHashRouter(routes)(mainElement);
+createHashRouter(routes)();
 
 createNavbar({
   routes: ROUTES_NAME_HREF,

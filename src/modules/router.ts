@@ -42,14 +42,14 @@ export const resolveRouteFromPath = ({
  * @returns A function that accepts a root element and adds load and hashchange event listeners which calls the callback function of the resolved route to inject the content of the page into the root element.
  */
 export const createHashRouter = (routes: Routes) => {
-  return (rootElement: HTMLElement) => {
+  return () => {
     const onChangeRoute = () => {
       // get the route from the address bar
       const path = getPathFromHashRoute();
       // resolve the route and get a callback function of registered route
       const route = resolveRouteFromPath({ path, routes });
       // inject the content of the page
-      route.callback(rootElement);
+      route.callback();
     };
 
     window.addEventListener("load", onChangeRoute);

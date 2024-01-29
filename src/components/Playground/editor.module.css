@@ -1,0 +1,24 @@
+.editorWrapper {
+  --fileExplorer-width: 200px;
+
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--sp-colors-surface2);
+  gap: 1px;
+  height: 300px;
+
+  .fileExplorer {
+    width: var(--fileExplorer-width);
+    button {
+      span {
+        overflow: visible !important;
+      }
+    }
+  }
+
+  .codeEditor {
+    width: calc(100% - var(--fileExplorer-width));
+  }
+}
