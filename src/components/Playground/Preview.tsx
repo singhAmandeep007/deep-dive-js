@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 
-import {
-  SandpackPreview,
-  SandpackConsole,
-  useSandpack
-} from "@codesandbox/sandpack-react";
+import { SandpackPreview, SandpackConsole } from "@codesandbox/sandpack-react";
 
 import refreshSvg from "assets/img/refresh.svg";
 
@@ -19,25 +15,21 @@ const previewTabs = {
 
 type PreviewTab = keyof typeof previewTabs;
 
-export const Preview = () => {
+export type PreviewProps = {
+  isRefreshDisabled?: boolean;
+  onRefresh?: () => void;
+};
+
+export const Preview = ({
+  isRefreshDisabled = false,
+  onRefresh
+}: PreviewProps) => {
   const [selectedPreviewTab, setSelectedPreviewTab] =
     useState<PreviewTab>("result");
-
-  const {
-    sandpack: { status },
-    dispatch
-  } = useSandpack();
 
   const handleOnChangePreviewTab = (tab: PreviewTab) => {
     setSelectedPreviewTab(tab);
   };
-
-  const handleRefresh = () => {
-    // sends the refresh message to the bundler, should be logged by the listener
-    dispatch({ type: "refresh" });
-  };
-
-  const isRefeshDisabled = status === "idle";
 
   const isResultTabSelected = selectedPreviewTab === previewTabs.result;
   const isConsoleTabSelected = selectedPreviewTab === previewTabs.console;
@@ -65,8 +57,8 @@ export const Preview = () => {
           <abbr title="Refresh pane">
             <button
               className={clsx(commonStyles.button, commonStyles.iconButton)}
-              onClick={handleRefresh}
-              disabled={isRefeshDisabled}
+              onClick={onRefresh}
+              disabled={isRefreshDisabled}
             >
               <img src={refreshSvg} />
             </button>

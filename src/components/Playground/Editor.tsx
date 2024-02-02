@@ -1,7 +1,4 @@
-import React, { RefObject, forwardRef, useEffect } from "react";
-// import { markdown } from "@codemirror/lang-markdown";
-// import { EditorSelection } from "@codemirror/state";
-// import { EditorView } from "@codemirror/view";
+import React, { forwardRef } from "react";
 
 import {
   SandpackFileExplorer,
@@ -13,41 +10,6 @@ import styles from "./editor.module.css";
 
 export const Editor = forwardRef<CodeMirrorRef | null>(
   (props, codeMirrorInstance) => {
-    // useEffect(() => {
-    //   if (codeMirrorInstance?.current) {
-    //     // Getting CodeMirror instance
-    //     const cmInstance = codeMirrorInstance.current.getCodemirror() as
-    //       | EditorView
-    //       | undefined;
-
-    //     if (!cmInstance) return;
-    //     console.log(cmInstance);
-
-    // 		const trans = cmInstance.state.update({
-    //       selection: cmInstance.state.selection,
-    //       changes: {
-    //         from: 0,
-    //         to: cmInstance.state.doc.length,
-    //         insert: prettierCode
-    //       }
-    //     });
-
-    //     cmInstance.update([trans]);
-
-    //     // cmInstance.update([trans]);
-    //   }
-    // }, [codeMirrorInstance]);
-
-    /**
- * additionalLanguages={[
-            {
-              name: "markdown",
-              extensions: ["md"],
-              language: markdown()
-            }
-          ]}
- */
-
     return (
       <div className={styles.editorWrapper}>
         <SandpackFileExplorer className={styles.fileExplorer} />
@@ -56,7 +18,21 @@ export const Editor = forwardRef<CodeMirrorRef | null>(
           closableTabs
           showLineNumbers
           wrapContent={false}
+          showInlineErrors={true}
           className={styles.codeEditor}
+          // not working in sandpack for some reason
+          // additionalLanguages={[
+          //   {
+          //     name: "python",
+          //     extensions: ["py"],
+          //     language: python()
+          //   }
+          // {
+          //   name: "markdown",
+          //   extensions: ["md"],
+          //   language: markdown()
+          // }
+          // ]}
         />
       </div>
     );

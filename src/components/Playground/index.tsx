@@ -5,12 +5,17 @@ import {
 
 import { CodePlayground } from "./CodePlayground";
 
+/**
+ *
+ * IMP: template other than react-ts does not behave as expected.
+ * Have issues with other presets and even custom setup.
+ */
 export function Playground({
   files = {},
-  template = "react",
   options,
   label,
-  customSetup = {}
+  customSetup = {},
+  template = "vanilla-ts"
 }: Pick<
   SandpackProviderProps,
   "files" | "template" | "options" | "customSetup"
@@ -21,13 +26,11 @@ export function Playground({
     <SandpackProvider
       theme="dark"
       customSetup={{
-        entry: "./index.ts",
         ...customSetup
       }}
       files={files}
       options={{
         autorun: true,
-        activeFile: "./index.ts",
         ...options
       }}
       template={template}

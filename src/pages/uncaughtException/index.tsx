@@ -5,7 +5,7 @@ import { replaceChild, stringToHTML, mount } from "utils";
 export const uncaughtExceptionPage = (props: PageProps) => {
   const playgroundId = "playground";
 
-  const htmlTemplate = /* HTML */ ` <h1>uncaughtExceptionPage</h1>
+  const htmlTemplate = /* HTML */ ` <h1>Uncaught Exception</h1>
     <div id=${playgroundId}></div>`;
 
   let element = stringToHTML(htmlTemplate).node;
@@ -19,7 +19,7 @@ export const uncaughtExceptionPage = (props: PageProps) => {
     id: playgroundId,
     children: (
       <Playground
-        files={{ "/index.ts": { code: "type f = {}", hidden: true } }}
+        files={{ "/eg.ts": { code: "console.log('hello')", hidden: true } }}
       />
     )
   });

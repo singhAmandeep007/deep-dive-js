@@ -27,39 +27,57 @@ export const prototypePollutionPage = (props: PageProps) => {
   mount({
     id: playgroundId,
     children: Playground({
+      options: {
+        activeFile: "index.ts"
+      },
       customSetup: {
         dependencies: {
           "lodash.merge": "latest"
+        },
+        devDependencies: {
+          typescript: "^4.0.0"
         }
       },
       files: {
-        "/index.ts": {
+        "index.ts": {
+          code: `
+					import { eg } from "./eg.ts";
+					
+					import "./styles.css";
+
+					document.getElementById("app").innerHTML = '<h1>Hello world</h1>';
+					
+					eg();
+					`
+        },
+        "/eg.ts": {
           code: `
 					import safeMerge from "lodash.merge";
+
+					export function eg(){
+
 					// objects created via the object literal {} or the new Object() constructor share the same prototype object unless we explicitly override it.
 					// if we modify a prototype shared by two or more objects, all objects will reflect this modification
-						const a1 = { foo: 'bar'};
-						a1.__proto__.polluted = true;
+						// const a1 = { foo: 'bar'};
+						// a1.__proto__.polluted = true;
 
-						const b1 = { bar: 'baz'};
-						console.log("b1.polluted", b1.polluted);
+						// const b1 = { bar: 'baz'};
+						// console.log("b1.polluted", b1.polluted);
 
-						const a2 = {};
-						const b2 = new Object();
-						console.log("a2.__proto__ === b2.__proto__", a2.__proto__ === b2.__proto__);
+						// const a2 = {};
+						// const b2 = new Object();
+						// console.log("a2.__proto__ === b2.__proto__", a2.__proto__ === b2.__proto__);
 
 					// how can it make our app vulnerable?
 					// E.g. sending a JSON object to the server and the server uses it to create a new object
 					// curl -H "Content-Type: application/json" -X POST -d '{"about": {"__proto__": {"role": "admin"}}}'
-					/*
-						* If we would be using a unsafe merge function like the one below, we would be vulnerable to prototype pollution as __proto__ key exists in both objects.
-					*/
+					// If we would be using a unsafe merge function like the one below, we would be vulnerable to prototype pollution as __proto__ key exists in both objects.
 
 					const unsafeMerge = (target, source) => {
 						for(const key in source){
 							// recursively merge objects
 							if(typeof target[key] === 'object' && typeof source[key] === 'object'){
-								merge(target[key], source[key]);
+								unsafeMerge(target[key], source[key]);
 							}else{
 								// overwrite target key with source key
 								target[key] = source[key];
@@ -74,12 +92,11 @@ export const prototypePollutionPage = (props: PageProps) => {
 				 // using safe merge function filters out __proto__ key
 				 console.log("safeMerge", safeMerge({}, JSON.parse('{"about": {"__proto__": {"role": "admin"} }}')));
 
-
 					// some other script polluting the Object prototype
-					 Object.prototype.isTokenExpired = true;
+					// Object.prototype.isTokenExpired = true;
 
-					let a3 = {zoo: "zaz"};
-					console.log("a3.isTokenExpired", a3.isTokenExpired);
+					// let a3 = {zoo: "zaz"};
+					// console.log("a3.isTokenExpired", a3.isTokenExpired);
 
 					// Solution
 					// 1. Use safe merge function
@@ -89,37 +106,29 @@ export const prototypePollutionPage = (props: PageProps) => {
 					// 5. Regularly update new patches for libraries
 
 					// Reference 
-					/*
-					 * https://book.hacktricks.xyz/pentesting-web/deserialization/nodejs-proto-prototype-pollution
-					*/
-
+	
+					 // https://book.hacktricks.xyz/pentesting-web/deserialization/nodejs-proto-prototype-pollution
+					
+				}
 					`,
-          hidden: true
+          hidden: false
         },
-
-        "/indewx.ts": {
-          code: `var d = 0;`
+        "/readme.md": {
+          code: `
+        	1. feat: A new feature
+        	2. feat: A new feature
+        	`
         },
-        "/App.tsx": {
-          code: `export default function App() {
-						return <h1>Hel l o wor ld</h1>;
-					}`
+        "/el.css": {
+          code: `
+        	#root {
+						display: flex;
+        		flex-direction: column;
+        		align-items: center;
+        		justify-content: center;
+        	}
+        	`
         }
-        // "/readme.md": {
-        //   code: `
-        // 	1. feat: A new feature
-        // 	2. feat: A new feature
-        // 	`
-        // },
-        // "/el.css": {
-        //   code: `
-        // 			#root {display: flex;
-        // 		flex-direction: column;
-        // 		align-items: center;
-        // 		justify-content: center;
-        // 	}
-        // 	`
-        // }
       }
     })
   });

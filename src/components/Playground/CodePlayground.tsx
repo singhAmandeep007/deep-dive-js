@@ -19,19 +19,41 @@ import styles from "./codePlayground.module.css";
 import commonStyles from "./common.module.css";
 
 export const CodePlayground = ({ label = "Playground" }) => {
+  // can play around with codeMirrorInstance
   const codeMirrorInstance = useRef(null);
 
-  const { runPrettier } = usePrettier({ codeMirrorInstance });
+  const { runPrettier } = usePrettier();
 
-  const {
-    sandpack: { activeFile }
-  } = useSandpack();
   const { code: activeCode, updateCode: updateActiveCode } = useActiveCode();
 
-  const format = useCallback(() => {
-    console.log("format");
-    runPrettier({ activeFile, activeCode, updateActiveCode });
-  }, [activeCode, activeFile, runPrettier, updateActiveCode]);
+  const {
+    sandpack: { activeFile, status },
+    dispatch
+  } = useSandpack();
+
+  const onRefresh = useCallback(() => {
+    dispatch({ type: "refresh" });
+  }, []);
+
+  const handleFormat = useCallback(
+    (forceFormat: boolean = false) => {
+      runPrettier({
+        activeFile,
+        activeCode,
+        updateActiveCode,
+        force: forceFormat
+      });
+    },
+    [runPrettier, activeFile, activeCode, updateActiveCode]
+  );
+
+  useEffect(() => {
+    if (status === "running" && activeFile) {
+      handleFormat();
+    }
+  }, [activeFile, status]);
+
+  const isRefreshDisabled = status === "idle";
 
   return (
     <div className={styles.container}>
@@ -42,7 +64,9 @@ export const CodePlayground = ({ label = "Playground" }) => {
             <abbr title="Format code using Prettier">
               <button
                 className={clsx(commonStyles.button, commonStyles.iconButton)}
-                onClick={format}
+                onClick={() => {
+                  handleFormat(true);
+                }}
               >
                 <img src={formatSvg} />
               </button>
@@ -57,7 +81,7 @@ export const CodePlayground = ({ label = "Playground" }) => {
           </div>
         </header>
         <Editor ref={codeMirrorInstance} />
-        <Preview />
+        <Preview {...{ onRefresh, isRefreshDisabled }} />
       </div>
     </div>
   );

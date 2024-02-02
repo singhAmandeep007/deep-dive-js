@@ -38,3 +38,9 @@
 
 9. revert: Reverts a previous commit
    1. Example: revert: revert commit 123456
+
+## CodeSandpack Issues
+
+1. e.match error due to updateFile or updateCurrentFile function
+2. markdown not working
+3. issues with vanilla-ts and vanilla but not with react-ts

@@ -24,7 +24,7 @@
     chalk "^2.4.2"
     js-tokens "^4.0.0"
 
-"@codemirror/autocomplete@^6.0.0", "@codemirror/autocomplete@^6.4.0", "@codemirror/autocomplete@^6.7.1":
+"@codemirror/autocomplete@^6.0.0", "@codemirror/autocomplete@^6.4.0":
   version "6.12.0"
   resolved "https://registry.npmjs.org/@codemirror/autocomplete/-/autocomplete-6.12.0.tgz"
   integrity sha512-r4IjdYFthwbCQyvqnSlx0WBHRHi8nBvU+WjJxFUij81qsBfhNudf/XKKmmC2j3m0LaOYUQTf3qiEK1J8lO1sdg==
@@ -55,21 +55,6 @@
     "@lezer/common" "^1.0.2"
     "@lezer/css" "^1.0.0"
 
-"@codemirror/lang-html@^6.0.0":
-  version "6.4.8"
-  resolved "https://registry.yarnpkg.com/@codemirror/lang-html/-/lang-html-6.4.8.tgz#961db9b1037efcb1d0f50ae6082e5a367fa1470c"
-  integrity sha512-tE2YK7wDlb9ZpAH6mpTPiYm6rhfdQKVDa5r9IwIFlwwgvVaKsCfuKKZoJGWsmMZIf3FQAuJ5CHMPLymOtg1hXw==
-  dependencies:
-    "@codemirror/autocomplete" "^6.0.0"
-    "@codemirror/lang-css" "^6.0.0"
-    "@codemirror/lang-javascript" "^6.0.0"
-    "@codemirror/language" "^6.4.0"
-    "@codemirror/state" "^6.0.0"
-    "@codemirror/view" "^6.17.0"
-    "@lezer/common" "^1.0.0"
-    "@lezer/css" "^1.1.0"
-    "@lezer/html" "^1.3.0"
-
 "@codemirror/lang-html@^6.4.0":
   version "6.4.7"
   resolved "https://registry.npmjs.org/@codemirror/lang-html/-/lang-html-6.4.7.tgz"
@@ -98,20 +83,7 @@
     "@lezer/common" "^1.0.0"
     "@lezer/javascript" "^1.0.0"
 
-"@codemirror/lang-markdown@^6.2.4":
-  version "6.2.4"
-  resolved "https://registry.yarnpkg.com/@codemirror/lang-markdown/-/lang-markdown-6.2.4.tgz#1ec906a74d8353d87800bd8a16bd5feea73b37df"
-  integrity sha512-UghkA1vSMs8bT7RSZM6vsIocigyah2bV00eRQuZy76401UmFZdsTsbQNBGdyxRQDOLeEvF5iFwap0BM8LKyd+g==
-  dependencies:
-    "@codemirror/autocomplete" "^6.7.1"
-    "@codemirror/lang-html" "^6.0.0"
-    "@codemirror/language" "^6.3.0"
-    "@codemirror/state" "^6.0.0"
-    "@codemirror/view" "^6.0.0"
-    "@lezer/common" "^1.2.1"
-    "@lezer/markdown" "^1.0.0"
-
-"@codemirror/language@^6.0.0", "@codemirror/language@^6.3.0", "@codemirror/language@^6.3.2", "@codemirror/language@^6.4.0", "@codemirror/language@^6.6.0":
+"@codemirror/language@^6.0.0", "@codemirror/language@^6.3.2", "@codemirror/language@^6.4.0", "@codemirror/language@^6.6.0":
   version "6.10.0"
   resolved "https://registry.npmjs.org/@codemirror/language/-/language-6.10.0.tgz"
   integrity sha512-2vaNn9aPGCRFKWcHPFksctzJ8yS5p7YoaT+jHpc0UGKzNuAIx4qy6R5wiqbP+heEEdyaABA582mNqSHzSoYdmg==
@@ -165,10 +137,10 @@
     outvariant "1.4.0"
     static-browser-server "1.0.3"
 
-"@codesandbox/sandpack-react@^2.11.2":
-  version "2.11.2"
-  resolved "https://registry.npmjs.org/@codesandbox/sandpack-react/-/sandpack-react-2.11.2.tgz"
-  integrity sha512-Ni0nbGlT0g06Pq0ke6CcrupsWt/leAnfArWOUf7Yw2+ZhZFqYz1zlU9rT3xSTuUAkbHSh1gPC72G/5DN9xeyOg==
+"@codesandbox/sandpack-react@^2.11.3":
+  version "2.11.3"
+  resolved "https://registry.yarnpkg.com/@codesandbox/sandpack-react/-/sandpack-react-2.11.3.tgz#7c04760e326535626bdb9d054e6282e69f6ee074"
+  integrity sha512-Syr/nb8bJYvlx6CoaXHlWDapVOp0ZJkXCZDWBCzKCR7Q1y7Bsx15LEuqSPzGQqJa/J8qyy/dRYlpKvPkZtOoFw==
   dependencies:
     "@codemirror/autocomplete" "^6.4.0"
     "@codemirror/commands" "^6.1.3"
@@ -195,11 +167,6 @@
   version "1.2.0"
   resolved "https://registry.npmjs.org/@lezer/common/-/common-1.2.0.tgz"
   integrity sha512-Wmvlm4q6tRpwiy20TnB3yyLTZim38Tkc50dPY8biQRwqE+ati/wD84rm3N15hikvdT4uSg9phs9ubjvcLmkpKg==
-
-"@lezer/common@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@lezer/common/-/common-1.2.1.tgz#198b278b7869668e1bebbe687586e12a42731049"
-  integrity sha512-yemX0ZD2xS/73llMZIK6KplkjIjf2EvAHcinDi/TfJ9hS25G0388+ClHt6/3but0oOxinTcQHJLDXh6w1crzFQ==
 
 "@lezer/css@^1.0.0", "@lezer/css@^1.1.0":
   version "1.1.7"
@@ -240,14 +207,6 @@
   integrity sha512-z5mY4LStlA3yL7aHT/rqgG614cfcvklS+8oFRFBYrs4YaWLJyKKM4+nN6KopToX0o9Hj6zmH6M5kinOYuy06ug==
   dependencies:
     "@lezer/common" "^1.0.0"
-
-"@lezer/markdown@^1.0.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@lezer/markdown/-/markdown-1.2.0.tgz#387cd5fba85479e3fa1d74586060dc5392c9ccb6"
-  integrity sha512-d7MwsfAukZJo1GpPrcPGa3MxaFFOqNp0gbqF+3F7pTeNDOgeJN1muXzx1XXDPt+Ac+/voCzsH7qXqnn+xReG/g==
-  dependencies:
-    "@lezer/common" "^1.0.0"
-    "@lezer/highlight" "^1.0.0"
 
 "@lmdb/lmdb-darwin-arm64@2.8.5":
   version "2.8.5"
